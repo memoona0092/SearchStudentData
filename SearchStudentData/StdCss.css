@@ -1,0 +1,9 @@
+﻿td{
+    padding-left:10px;
+}
+.SearchBox {
+    height: 24px;
+    width: 400px;
+    border: 1px solid gray;
+}
+

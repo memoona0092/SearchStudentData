@@ -1,0 +1,100 @@
+﻿@model IEnumerable<SearchStudentData.Models.Student>
+
+@{
+    ViewBag.Title = "StudentsList";
+}
+<head>
+<link rel="stylesheet" href="~/StdCss.css" />
+</head>
+<h2>StudentsList</h2>
+
+ @using (Html.BeginForm("SearchStudent","StudentResult"))
+{
+     <table>
+         <tr>
+             <td>
+                 <select name="SearchOption" id="SearchOption" class="dropdown-header">
+                     <option  value=""selected > Search Type</option>
+                     <option value="1">Student Name</option>
+                     <option value="2">Student Class</option>
+                     <option value="3">Student College</option>
+                 </select>
+             </td>
+             <td >
+                 <input type="text" name="SearchValue"  class="SearchBox" />
+             </td>
+             <td>
+                 <select name="FiltersValue" id="FiltersValue" class="dropdown-header">
+                     <option value="" selected>Filters (Optional)</option>
+                     <option value="1">
+                         Find the student with minimum marks
+                     </option>
+                     <option value="2">
+                         Find the student with maximum marks
+                     </option>
+                 </select>
+                 
+             </td>
+             <td>
+                 <input type="submit" class="btn-xs" value="Search" style="background-color:burlywood;width:50px;" />
+             </td>
+             </tr>
+
+     </table>
+}
+
+<p>
+    @Html.ActionLink("Create New", "AddStudentResult")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StdFatherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StdObtainMarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StdTotalMarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StdClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StdColg)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdFatherName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdObtainMarks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdTotalMarks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdClass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdColg)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditStudent", new { id=item.StudentID }) |
+            @Html.ActionLink("Details", "StudentDetail", new { id=item.StudentID }) |
+           
+        </td>
+    </tr>
+}
+
+</table>
